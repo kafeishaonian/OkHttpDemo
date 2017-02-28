@@ -13,17 +13,11 @@ import java.util.Map;
 /**
  * Created by hongmingwei on 2017/2/28 10:42
  */
-public class PostParams extends OkHttpRequestBuilder<PostParams> implements Params {
+public class PostParams extends OkHttpRequestBuilder<PostParams> {
 
     @Override
     public RequestCall build() {
         return new PostRequest(url, tag, params, headers, id).build();
-    }
-
-    @Override
-    public PostParams params(Map<String, String> params) {
-        this.params = params;
-        return this;
     }
 
     @Override

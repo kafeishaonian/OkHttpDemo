@@ -18,12 +18,6 @@ import java.util.Set;
 public class GetParams extends OkHttpRequestBuilder<GetParams> {
 
     @Override
-    public OkHttpRequestBuilder params(Map<String, String> params) {
-        this.params = params;
-        return this;
-    }
-
-    @Override
     public GetParams addParams(String key, String val) {
         if (this.params == null){
             params = new LinkedHashMap<>();
