@@ -1,7 +1,8 @@
 package com.okhttp.demo.okhttp;
 
-import com.okhttp.demo.okhttp.builder.GetParams;
-import com.okhttp.demo.okhttp.builder.RequestCall;
+import com.okhttp.demo.okhttp.get.GetParams;
+import com.okhttp.demo.okhttp.post.PostParams;
+import com.okhttp.demo.okhttp.request.RequestCall;
 import com.okhttp.demo.okhttp.callback.UserCallBack;
 
 /**
@@ -18,8 +19,21 @@ public class HttpTaskManager {
         call.execute(parserObj, cls);
     }
 
+    /**
+     * get请求
+     * @return
+     */
     public static GetParams get(){
         return new GetParams();
     }
+
+    /**
+     * post请求
+     * @return
+     */
+    public static PostParams post(){
+        return new PostParams();
+    }
+
 
 }

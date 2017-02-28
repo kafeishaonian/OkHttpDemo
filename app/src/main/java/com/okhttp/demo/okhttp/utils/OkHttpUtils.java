@@ -1,9 +1,10 @@
 package com.okhttp.demo.okhttp.utils;
 
-import com.okhttp.demo.okhttp.builder.RequestCall;
+import com.okhttp.demo.okhttp.request.RequestCall;
 import com.okhttp.demo.okhttp.callback.Callback;
 
 import java.io.IOException;
+import java.util.concurrent.Executor;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -41,6 +42,14 @@ public class OkHttpUtils<T> {
 
     public static OkHttpUtils getInstance(){
         return initClient(null);
+    }
+
+    /**
+     * 开启一个线程
+     * @return
+     */
+    public Executor getDelivery(){
+        return mPlatform.defaultCallbackExecutor();
     }
 
     public OkHttpClient getOkHttpClient(){

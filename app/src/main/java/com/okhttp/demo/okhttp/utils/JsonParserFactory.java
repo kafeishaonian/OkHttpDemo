@@ -11,6 +11,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import com.okhttp.demo.model.AbstractBaseModel;
+import com.okhttp.demo.model.UserModel;
 import com.okhttp.demo.okhttp.ServerErrorCode;
 
 import org.json.JSONException;
@@ -29,7 +30,7 @@ public class JsonParserFactory {
      */
     private static final String TAG = "JsonParserFactory";
 
-    public static <T extends AbstractBaseModel> T parseStringJson(Class<T> cls, Object context) throws JSONException,
+    public static <T extends UserModel> T parseStringJson(Class<T> cls, Object context) throws JSONException,
             HttpClientApiException, IOException {
         final T response;
         try {
@@ -48,9 +49,9 @@ public class JsonParserFactory {
             throw new JSONException(TAG + " JsonParser is null.");
         }
 
-        if (response.getCode() != ServerErrorCode.STATUS_SUCCESS) {
-            throw new HttpClientApiException(response.getCode(), response.getMsg());
-        }
+//        if (response.getCode() != ServerErrorCode.STATUS_SUCCESS) {
+//            throw new HttpClientApiException(response.getCode(), response.getMsg());
+//        }
 
         return response;
     }

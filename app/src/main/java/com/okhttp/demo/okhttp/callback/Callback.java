@@ -25,6 +25,15 @@ public abstract class Callback<T> {
     public void onAfrer(int id){
 
     }
+    /**
+     * UI Thread
+     * @param progress
+     * @param total
+     * @param id
+     */
+    public void inProgress(float progress, long total, int id){
+
+    }
 
     /**
      * 用PareNetworkResponse解析响应代码。需要返回true

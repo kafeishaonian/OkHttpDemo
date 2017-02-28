@@ -1,6 +1,10 @@
-package com.okhttp.demo.okhttp.builder;
+package com.okhttp.demo.okhttp.get;
 
 import android.net.Uri;
+
+import com.okhttp.demo.okhttp.request.OkHttpRequestBuilder;
+import com.okhttp.demo.okhttp.request.Params;
+import com.okhttp.demo.okhttp.request.RequestCall;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -11,7 +15,13 @@ import java.util.Set;
  * URl拼接
  * Created by hongmingwei on 2017/1/11 11:59
  */
-public class GetParams extends  OkHttpRequestBuilder<GetParams> implements Params {
+public class GetParams extends OkHttpRequestBuilder<GetParams> {
+
+    @Override
+    public OkHttpRequestBuilder params(Map<String, String> params) {
+        this.params = params;
+        return this;
+    }
 
     @Override
     public GetParams addParams(String key, String val) {

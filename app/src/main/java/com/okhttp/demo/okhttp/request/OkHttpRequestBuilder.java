@@ -1,11 +1,11 @@
-package com.okhttp.demo.okhttp.builder;
+package com.okhttp.demo.okhttp.request;
 
 import java.util.Map;
 
 /**
  * Created by hongmingwei on 2017/1/11 12:00
  */
-public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
+public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> implements Params {
 
     protected String url;
     protected Object tag;

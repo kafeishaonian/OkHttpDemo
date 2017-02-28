@@ -1,4 +1,4 @@
-package com.okhttp.demo.okhttp.builder;
+package com.okhttp.demo.okhttp.request;
 
 import com.okhttp.demo.okhttp.callback.Callback;
 import com.okhttp.demo.okhttp.utils.OkHttpUtils;

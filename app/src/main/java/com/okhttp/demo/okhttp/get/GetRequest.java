@@ -1,4 +1,6 @@
-package com.okhttp.demo.okhttp.builder;
+package com.okhttp.demo.okhttp.get;
+
+import com.okhttp.demo.okhttp.request.OKHttpRequest;
 
 import java.util.Map;
 

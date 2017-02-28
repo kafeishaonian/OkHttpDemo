@@ -33,20 +33,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData(){
-        HttpTaskManager.startStringRequest(
-                DataRequestUtils.getTline(TAG, "catch"), new UserCallBack() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
+//        HttpTaskManager.startStringRequest(
+//                DataRequestUtils.getTline(TAG, "1", "20"), new UserCallBack() {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//
+//                    }
+//                    @Override
+//                    public void onResponse(Object responst, int resultCode) {
+//                        if (ServerErrorCode.STATUS_SUCCESS == resultCode) {
+//                            UserModel model = (UserModel) responst;
+//                            Log.e(TAG, model.getItem().getList().get(0).getContent() + "啦啦啦啦" + resultCode);
+//                        }
+//                    }
+//                }, UserModel.class);
 
-                    }
-                    @Override
-                    public void onResponse(Object responst, int resultCode) {
-                        if (ServerErrorCode.STATUS_SUCCESS == resultCode) {
-                            UserModel model = (UserModel) responst;
-                            Log.e(TAG, model.getItem().getProfitShowList().get(1).getProfit()  +"" + resultCode);
-                        }
-                    }
-                }, UserModel.class);
+        HttpTaskManager.startStringRequest(DataRequestUtils.getPost(TAG), new UserCallBack() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Log.e(TAG, "啦啦啦啦啦啦" + id);
+            }
+
+            @Override
+            public void onResponse(Object responst, int resultCode) {
+                UserModel model = (UserModel) responst;
+                Log.e(TAG, model.getMultiResult().getResults().get(0).getPicUrl() + "哈哈哈哈哈哈哈哈哈" + resultCode);
+            }
+        }, UserModel.class);
     }
 
     @Override

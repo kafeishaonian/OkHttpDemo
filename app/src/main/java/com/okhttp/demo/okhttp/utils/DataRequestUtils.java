@@ -2,17 +2,22 @@ package com.okhttp.demo.okhttp.utils;
 
 
 import com.okhttp.demo.okhttp.HttpTaskManager;
-import com.okhttp.demo.okhttp.builder.GetParams;
-import com.okhttp.demo.okhttp.builder.RequestCall;
+import com.okhttp.demo.okhttp.get.GetParams;
+import com.okhttp.demo.okhttp.post.PostParams;
+import com.okhttp.demo.okhttp.request.OkHttpRequestBuilder;
+import com.okhttp.demo.okhttp.request.Params;
+import com.okhttp.demo.okhttp.request.RequestCall;
 
 /**
  * Created by hongmingwei on 2017/1/16 10:09
  */
 public class DataRequestUtils {
     // api地址
-    public static final String FORMAL_API_HOST = "http://www.baidu.com";
+    public static final String FORMAL_API_HOST = "http://api.tudou.com";
     //接口
-    private static final String GET_NONFARM_INFO = "//getAllNonfarmInfo.do";
+    private static final String GET_NONFARM_INFO = "/v3/gw";
+
+
 
 
     private static String combineRequestUrl(String domain){
@@ -21,22 +26,33 @@ public class DataRequestUtils {
     }
 
     //初始化拼接
-    private static GetParams addBase(GetParams builder){
+    private static OkHttpRequestBuilder addBase(OkHttpRequestBuilder builder){
         return builder
-                .addParams("appver", "1.0.0")
-                .addParams("sysver", "5.1")
-                .addParams("ua", "android");
+                .addParams("method", "item.info.get")
+                .addParams("format", "json")
+                .addParams("itemCodes", "yg8CVootoAc")
+                .addParams("appKey", "myKey");
     }
 
-    //接口拼接
-    public static RequestCall getTline(String tag, String environmentCode){
+    //接口拼接   20
+    public static RequestCall getTline(String tag, String page, String limit){
         String url = combineRequestUrl(GET_NONFARM_INFO);
         GetParams builder = HttpTaskManager.get()
                 .url(url)
                 .tag(tag)
-                .addParams("environmentCode", environmentCode);
+                .addParams("page", page)
+                .addParams("limit", limit);
         return addBase(builder).build();
     }
 
+
+
+    public static RequestCall getPost(String tag){
+        String url = combineRequestUrl(GET_NONFARM_INFO);
+        PostParams builder = HttpTaskManager.post()
+                .url(url)
+                .tag(tag);
+        return addBase(builder).build();
+    }
 
 }
