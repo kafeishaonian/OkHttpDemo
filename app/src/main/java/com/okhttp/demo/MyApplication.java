@@ -3,6 +3,10 @@ package com.okhttp.demo;
 import android.app.Application;
 
 
+import com.okhttp.demo.okhttp.cookie.ClearableCookieJar;
+import com.okhttp.demo.okhttp.cookie.PersistentCookieJar;
+import com.okhttp.demo.okhttp.cookie.cache.SetCookieCache;
+import com.okhttp.demo.okhttp.cookie.persistence.SharedPrefsCookiePersistor;
 import com.okhttp.demo.okhttp.utils.HttpUtils;
 import com.okhttp.demo.okhttp.utils.LogInterceptor;
 import com.okhttp.demo.okhttp.utils.OkHttpUtils;
@@ -27,6 +31,10 @@ public class MyApplication extends Application {
          * 本地证书的密码
          */
         HttpUtils.SSLParams sslParams = HttpUtils.getSslSocketFactory(null, null, null);
+        /**
+         * 持久化
+         */
+        ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new LogInterceptor("TAG")) //log日志
@@ -35,6 +43,7 @@ public class MyApplication extends Application {
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)  //写入超时
                 .pingInterval(10000L, TimeUnit.MILLISECONDS) //websocket 轮训间隔
 //                .sslSocketFactory(sslParams.sslSocketFactory, sslParams.trustManager)
+//                .cookieJar(cookieJar)
                 .build();
 
         OkHttpUtils.initClient(okHttpClient);
