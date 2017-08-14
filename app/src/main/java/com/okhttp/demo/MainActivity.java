@@ -7,9 +7,12 @@ import android.util.Log;
 import com.okhttp.demo.model.UserModel;
 import com.okhttp.demo.okhttp.HttpTaskManager;
 import com.okhttp.demo.okhttp.ServerErrorCode;
+import com.okhttp.demo.okhttp.callback.FileCallBack;
 import com.okhttp.demo.okhttp.callback.UserCallBack;
 import com.okhttp.demo.okhttp.utils.DataRequestUtils;
 import com.okhttp.demo.okhttp.utils.OkHttpUtils;
+
+import java.io.File;
 
 import okhttp3.Call;
 
@@ -60,6 +63,33 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, model.getMultiResult().getResults().get(0).getPicUrl() + "哈哈哈哈哈哈哈哈哈" + resultCode);
             }
         }, UserModel.class);
+
+        /**
+         * 网络请求下载文件
+         * FileCallback传入文件夹地址和文件名
+         */
+        HttpTaskManager.startFileRequest(DataRequestUtils.getFile(TAG), new FileCallBack("", "") {
+
+            @Override
+            public void inProgress(float progress, long total, int id) {
+//                mProgressBar.setProgress((int) (100 * progress));
+                //进度条
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(File responst, int resultCode) {
+                //最后获取到的文件
+            }
+        });
+
+
+
+
     }
 
     @Override

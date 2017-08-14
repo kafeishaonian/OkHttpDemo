@@ -1,5 +1,6 @@
 package com.okhttp.demo.okhttp;
 
+import com.okhttp.demo.okhttp.callback.FileCallBack;
 import com.okhttp.demo.okhttp.get.GetParams;
 import com.okhttp.demo.okhttp.post.PostParams;
 import com.okhttp.demo.okhttp.request.RequestCall;
@@ -17,6 +18,10 @@ public class HttpTaskManager {
      */
     public static void startStringRequest(RequestCall call, UserCallBack parserObj,Class cls){
         call.execute(parserObj, cls);
+    }
+
+    public static void startFileRequest(RequestCall call, FileCallBack parserObj){
+        call.execute(parserObj, null);
     }
 
     /**

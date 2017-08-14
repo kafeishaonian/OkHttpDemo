@@ -42,8 +42,8 @@ public class MyApplication extends Application {
                 .writeTimeout(10000L, TimeUnit.MILLISECONDS) //读取超时
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)  //写入超时
                 .pingInterval(10000L, TimeUnit.MILLISECONDS) //websocket 轮训间隔
-//                .sslSocketFactory(sslParams.sslSocketFactory, sslParams.trustManager)
-//                .cookieJar(cookieJar)
+                .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
+                .cookieJar(cookieJar)
                 .build();
 
         OkHttpUtils.initClient(okHttpClient);

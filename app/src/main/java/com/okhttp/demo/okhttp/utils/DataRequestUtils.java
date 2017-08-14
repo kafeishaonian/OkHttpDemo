@@ -2,6 +2,7 @@ package com.okhttp.demo.okhttp.utils;
 
 
 import com.okhttp.demo.okhttp.HttpTaskManager;
+import com.okhttp.demo.okhttp.callback.FileCallBack;
 import com.okhttp.demo.okhttp.get.GetParams;
 import com.okhttp.demo.okhttp.post.PostParams;
 import com.okhttp.demo.okhttp.request.OkHttpRequestBuilder;
@@ -54,5 +55,13 @@ public class DataRequestUtils {
                 .tag(tag);
         return addBase(builder).build();
     }
+
+    public static RequestCall getFile(String tag){
+        GetParams builder = HttpTaskManager.get()
+                .url("")
+                .tag(tag);
+        return addBase(builder).build();
+    }
+
 
 }

@@ -47,13 +47,13 @@ public abstract class Callback<T> {
 
     /**
      * 解析网络响应
-     * @param request
+     * @param response
      * @param id
      * @param cls
      * @return
      * @throws Exception
      */
-    public abstract T parseNetworkResponse(Response request, int id, Class<T> cls) throws Exception;
+    public abstract T parseNetworkResponse(Response response, int id, Class<T> cls) throws Exception;
 
     /**
      * 返回错误
