@@ -3,6 +3,8 @@
 # 这是关于OKHttp对Get请求的深度封装
 #
 # 新增post请求，并与get请求兼容做到统一请求方式，详细请看MainActivity实例
+#
+# 新增File下载，更新Https网络请求出现空指针异常
 
 
 通过在application中注册对所有请求进行统一管理，通过tag来结束当前请求，
